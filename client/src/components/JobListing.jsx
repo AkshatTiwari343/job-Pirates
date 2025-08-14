@@ -152,13 +152,13 @@ const JobListing = () => {
                 <p className='mb-8'>Get your desired job from top companies</p>
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {filterJobs.slice((currentPage - 1) * 9, currentPage * 9).map((job, index) => (
-                        <JobCard key={index} job={job} />
+                        <JobCard key={job._id} job={job} />
                     ))}
                 </div>
 
                 {filterJobs.length > 0 && (
                     <div className='flex justify-center items-center space-x-2 mt-10'>
-                        <a  key={index} href="#job-list">
+                        <a href="#job-list" >
                             <img
                                 onClick={() => setCurrentPage(Math.max(currentPage - 1, 1))}
                                 src={assets.left_arrow_icon}
@@ -166,7 +166,7 @@ const JobListing = () => {
                             />
                         </a>
                         {Array.from({ length: Math.ceil(filterJobs.length / 9) }).map((_, index) => (
-                            <a href="#job-list" key={index}>
+                            <a href="#job-list" key={index} >
                                 <button
                                     className={`w-10 h-10 flex items-center justify-center border-2 border-grey-600 rounded ${currentPage === index + 1 ? 'bg-purple-100 text-purple-600' : 'text-gray-500'}`}
                                     onClick={() => setCurrentPage(index + 1)}

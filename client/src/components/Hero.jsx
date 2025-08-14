@@ -30,7 +30,7 @@ const Hero = () => {
                     />
 
                     {/* Hero Content */}
-                    <div className="px-6 sm:px-8 py-16 sm:py-20 text-center relative z-10">
+                    <div className="px-6 sm:px-8 py-16 sm:py-20 text-center relative z-5">
                         <h1 className="text-3xl sm:text-5xl font-bold mb-6 text-white drop-shadow-lg">
                             Welcome to Our Job Portal
                         </h1>

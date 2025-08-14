@@ -3,9 +3,10 @@ import Navbar from '../components/Navbar'
 import {AppContext} from '../context/AppContext'
 import { useParams } from 'react-router-dom';
 import Loading from '../components/Loading';
-import { assets, jobsData } from '../assets/assets';
+import { assets} from '../assets/assets';
 import moment from 'moment';
-
+import JobCard from '../components/JobCard';
+import Footer from '../components/Footer';
 const ApplyJob = () => {
   const {id}= useParams();
   const [jobData, setJobData] = useState(null);
@@ -26,7 +27,7 @@ const ApplyJob = () => {
   }, [id, jobs]);
   
   return jobData ? (
-    <div className="">
+    <div>
       <Navbar />
       <div className='min-h-screen flex flex-col py-10 container px-4 mx-auto 2xl:px-20'>
         <div className='bg-white text-black rounded w-full'>
@@ -36,8 +37,8 @@ const ApplyJob = () => {
               <div className='text-center md:text-left text-neutral-700 '>
                 <h1 className='text-3xl font-semibold'>{jobData.title}</h1>
                 <div className='flex flex-row flex-wrap max-md: justify-center gap-y-2 gap-6 text-gray-600 mt-2'>
-                  <span className="flex items-center gap-4 text-sm text-gray-500">
-                    <span className='flex items-center gap-1'>
+                  <span className="flex items-center gap-4 text-sm text-gray-500 md:flex-row flex-col">
+                    <span className='flex items-center gap-1 '>
                       <img src={assets.suitcase_icon} alt="job" />
                       {jobData.companyId.name}
                     </span>
@@ -63,17 +64,23 @@ const ApplyJob = () => {
             </div>
           </div>
 
-          <div>
-            <div>
-              <h2>Job Description</h2>
-              <div dangerouslySetInnerHTML={{__html: jobData.description}} className='text-gray-600 text-sm mb-6'>
+          <div className='flex flex-col lg:flex-row justify-between items-start'>
+            <div className='w-full lg:w-2/3'>
+              <h2 className='font-bold text-2xl mb-4'>Job Description</h2>
+              <div dangerouslySetInnerHTML={{__html: jobData.description}} className='tiwari-text'>
                 
               </div>
-              <button className='bg-purple-600 p-2.5 px-10 text-white rounded'>Apply Now</button>
+              <button className='bg-purple-600 p-2.5 px-10 text-white rounded mt-10'>Apply Now</button>
+            </div>
+            {/* Sidebar for related jobs Card */}
+            <div className='w-full lg:w-1/3 mx-auto mt-10 lg:mt-0 lg:ml-10 space-y-5'>
+              <h2 className='text-xl text-gray-700 font-semibold'>More Jobs from {jobData.companyId.name}</h2>
+              {jobs.filter(job => job.companyId._id === jobData.companyId._id && job._id !== jobData._id).filter(job => true).slice(0,4).map((job,index)=> <JobCard key={index} job={job}/>)}
             </div>
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   ) : (
     <Loading />
