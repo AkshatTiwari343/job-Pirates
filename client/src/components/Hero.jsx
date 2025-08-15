@@ -16,7 +16,7 @@ const Hero = () => {
     };
 
     return (
-        <div className="overflow-hidden flex flex-col justify-center items-center w-full min-w-[90vw] min-h-[80vh]">
+        <div className="overflow-hidden flex flex-col justify-center items-center w-full mt-10">
             <div className="w-full max-w-7xl flex flex-col items-center">
                 {/* Hero Background */}
                 <div className="relative rounded-3xl shadow-2xl overflow-hidden w-full min-h-[500px]">
@@ -52,7 +52,7 @@ const Hero = () => {
                             </div>
 
                             {/* Divider for Desktop */}
-                            <div className="hidden sm:block w-px h-6 bg-gray-300 ml-24" />
+                            <div className="hidden sm:block w-px h-6 bg-gray-300 mx-4" />
 
                             {/* Location */}
                             <div className="flex items-center flex-1 px-4 w-full">

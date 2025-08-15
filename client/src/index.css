@@ -12,6 +12,9 @@
         scroll-behavior: smooth;
     }
 }
+html , body {
+    overflow-x: hidden;
+}
 
 ::-webkit-scrollbar{
     display: none;
